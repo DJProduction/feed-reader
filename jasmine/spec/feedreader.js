@@ -32,9 +32,9 @@ $(function() {
          * and that the URL is not empty.
          */
         it('feed urls should be defined and not empty', function () {
-            for (let feed of allFeeds) {
+            for (feed of allFeeds) {
                 expect(feed.url).toBeDefined();
-                expect(feed.url).not.toBe('');
+                expect(feed.url.length).not.toBe(0);
             };
         });
 
@@ -42,6 +42,12 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
+        it('feed names should be defined and not empty', function () {
+            for (feed of allFeeds) {
+                expect(feed.name).toBeDefined();
+                expect(feed.name.length).not.toBe(0);
+            };
+        });
     });
 
 
