@@ -9,15 +9,16 @@ In this project you are given a web-based application that reads RSS feeds. All 
 
 ### RSS Feeds
 1. Test if the slide menu feeds array have content.
-2. Test if the slide menu feeds' urls have content and none of them are empty.
-3. Test if the slide menu feeds' displayed names have content and none of them are empty.
+2. Test if the slide menu feeds' urls are defined and none of them are empty.
+3. Test if the slide menu feeds' displayed names are defined and none of them are empty.
 
 ### The Menu
 1. Test if the slide menu is hidden by default.
 2. Test the visibility of the slide menu item, if the menu icon is clicked once to "show" then clicked again to "hide".
 
 ### Initial Entries
-1. Test the existance
+1. Test the existance of any entries resulting from loading a given feed.
+2. Test if the urls from the loaded entries are defined and none of them are empty.
 
 
 ## What will I learn?

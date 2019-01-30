@@ -94,10 +94,12 @@ $(function () {
         it('urls of entries should be defined and not empty', () => {
             let entriesLinks = $(".feed .entry-link"),
             arrayOfEntryLinks = [];
-            console.log(`Number of entry links: ${entriesLinks.length}`);
+            // Converts the link elements from the feed into an array
             Array.from(entriesLinks).forEach(link => {
                 arrayOfEntryLinks.push(link);
             });
+            // Ensures each entry link is defined
+            // Then coverts each entry link into a string to check its length
             for (entryLink of arrayOfEntryLinks) {
                 expect(entryLink).toBeDefined();
                 expect(String(entryLink).length).toBeGreaterThan(0);
