@@ -1,13 +1,23 @@
-# Project Overview
+# Feedreader Project
 
-In this project you are given a web-based application that reads RSS feeds. The original developer of this application clearly saw the value in testing, they've already included [Jasmine](http://jasmine.github.io/) and even started writing their first test suite! Unfortunately, they decided to move on to start their own company and we're now left with an application with an incomplete test suite. That's where you come in.
+## Project Overview
+
+In this project you are given a web-based application that reads RSS feeds. All of the functions necessary for using the feed reader is included in the [app.js](js/app.js) file. This project also includes the testing suite [Jasmine](http://jasmine.github.io/). All the different functionality were performed in the [feedreader.js](jasmine/spec/feedreader.js) file. Provided below will be a list of the different tests and the methods to perform each test.
 
 
-## Why this Project?
+## Test Types and Sections Focus On
 
-Testing is an important part of the development process and many organizations practice a standard of development known as "test-driven development." This is when developers write tests first, before they ever start developing their application. All the tests initially fail and then they start writing application code to make these tests pass.
+### RSS Feeds
+1. Test if the slide menu feeds array have content.
+2. Test if the slide menu feeds' urls have content and none of them are empty.
+3. Test if the slide menu feeds' displayed names have content and none of them are empty.
 
-Whether you work in an organization that uses test-driven development or in an organization that uses tests to make sure future feature development doesn't break existing features, it's an important skill to have!
+### The Menu
+1. Test if the slide menu is hidden by default.
+2. Test the visibility of the slide menu item, if the menu icon is clicked once to "show" then clicked again to "hide".
+
+### Initial Entries
+1. Test the existance
 
 
 ## What will I learn?

@@ -81,10 +81,27 @@ $(function () {
         beforeEach((done) => {
             loadFeed(0, done);
         });
-        it('Entry should be more than 0', (done) => {
+        it('entry should be more than 0', (done) => {
             let entriesLen = $(".feed .entry").length;
             expect(entriesLen).toBeGreaterThan(0);
             done();
+        });
+
+        /* This is a function that loops through each entry url
+         * in a feed object and ensures that the url is defined
+         * and the url is not empty.
+         */
+        it('urls of entries should be defined and not empty', () => {
+            let entriesLinks = $(".feed .entry-link"),
+            arrayOfEntryLinks = [];
+            console.log(`Number of entry links: ${entriesLinks.length}`);
+            Array.from(entriesLinks).forEach(link => {
+                arrayOfEntryLinks.push(link);
+            });
+            for (entryLink of arrayOfEntryLinks) {
+                expect(entryLink).toBeDefined();
+                expect(String(entryLink).length).toBeGreaterThan(0);
+            }
         });
     });
 
