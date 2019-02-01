@@ -2,7 +2,17 @@
 
 ## Project Overview
 
-In this project you are given a web-based application that reads RSS feeds. All of the functions necessary for using the feed reader are included in the [app.js](js/app.js) file. This project also includes the web/testing suite [Jasmine](http://jasmine.github.io/). All the different tests were performed in the [feedreader.js](jasmine/spec/feedreader.js) file. Provided below will be a list of the different tests and the methods to perform each test.
+In this project you are given a web-based application that reads RSS feeds. All of the functions necessary for using the feed reader are included in the [app.js](js/app.js) file. This project also includes the web/testing suite [Jasmine](http://jasmine.github.io/) which you can select read the essential documentation. All the different tests were performed in the [feedreader.js](jasmine/spec/feedreader.js) file. Provided below will be a list of the different tests and the methods to perform each test.
+
+---
+## How to download and run
+
+1. To run on your computer simply click the **Clone or download** button on the top right.
+2. You can **Download to Desktop** or **Download as Zip** and the file will be download to your local Downloads folder.
+3. Unzip/Open the downloaded feed-reader folder
+4. Double click index.html file to start the feed-reader
+5. The Jasmine files are already included in the directory so you do not need to download.
+6. **It is highly suggested that you use console.log(value/process) in your tests to understand the data that the feed-reader passes through the tests.**
 
 ---
 ## Test Types and How to Successfully Perform Each Test
