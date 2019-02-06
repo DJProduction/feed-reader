@@ -105,7 +105,7 @@ In this project you are given a web-based application that reads RSS feeds. All 
 ### Initial Entries (Continued)
 
 2. Test if the urls from the loaded entries are defined and none of them are empty.
-   * **Pass**: Ensure that the `loadFeed(feed,done)` function is called and completed. Then check each `entriesLinks` item to make sure there is a `link` that is defined and not empty.
+   * **Pass**: Ensure that the `loadFeed(feed,done)` function is called and completed. Then check each `entriesLinks` item to make sure there is a link that is defined and not empty.
 
    * **Example**:
    Make sure the feed is loaded and complete first.
@@ -114,16 +114,10 @@ In this project you are given a web-based application that reads RSS feeds. All 
         loadFeed(feed, done);
     });
    ```
-   Convert `entriesLinks` to an array.
-   ```
-    Array.from(entriesLinks).forEach(link => {
-        arrayOfEntryLinks.push(link);
+   Ensure each array item is defined and not empty. Loop through each entry.
+    ```
+    entriesLinks.each((index, element) => {
+    expect($(element)).toBeDefined();
+    expect($(element).attr('href').length).toBeGreaterThan(0);
     });
-   ```
-   Ensure each array item is defined and not empty.
-      ```
-    for (entryLink of arrayOfEntryLinks) {
-        expect(entryLink).toBeDefined();
-        expect(String(entryLink).length).toBeGreaterThan(0);
-    }
    ```
