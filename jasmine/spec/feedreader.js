@@ -82,7 +82,7 @@ $(function () {
             loadFeed(0, done);
         });
         it('entry should be more than 0', (done) => {
-            let entriesLen = $(".feed .entry").length;
+            let entriesLen = $('.feed .entry').length;
             expect(entriesLen).toBeGreaterThan(0);
             done();
         });
@@ -92,18 +92,15 @@ $(function () {
          * and the url is not empty.
          */
         it('urls of entries should be defined and not empty', () => {
-            let entriesLinks = $(".feed .entry-link"),
-            arrayOfEntryLinks = [];
-            // Converts the link elements from the feed into an array
-            Array.from(entriesLinks).forEach(link => {
-                arrayOfEntryLinks.push(link);
+            let entriesLinks = $('.feed .entry-link');
+
+            //Loop through each entry and check values
+            entriesLinks.each((index, element) => {
+                // Ensures each entry link is defined
+                expect($(element)).toBeDefined();
+                // Ensures entry link url is not equal to 0
+                expect($(element).attr('href').length).toBeGreaterThan(0);
             });
-            // Ensures each entry link is defined
-            // Then coverts each entry link into a string to check its length
-            for (entryLink of arrayOfEntryLinks) {
-                expect(entryLink).toBeDefined();
-                expect(String(entryLink).length).toBeGreaterThan(0);
-            }
         });
     });
 
@@ -112,47 +109,24 @@ $(function () {
         /* This is a asynchronous function that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          */
-        let feedListMenu = $('body'),
-            feedList = $('.feed-list'),
-            feeds = feedList.find('li'), // Find out how many feeds exist
-            currentFeeds, // Current list of feeds being displayed
-            arrayOfFirstFeeds = [],
-            arrayOfSecondsFeeds = [];
+        let currentFeeds, // Current list of feeds being displayed
+            secondFeeds; // second list of feeds being displayed
 
+        // Uses callback function to load the 2 feeds and ensure the second
+        // feed does not load until the first feed is done
+        // Places each loaded feeds into an array
         beforeEach((done) => {
-            loadFeed(0, done); // Loads the starting feed
-            // setTimeout is needed because sometimes the other functions occur
-            // before the first loadFeed function is complete.
-            setTimeout(() => {
-                currentFeeds = $('.feed .entry-link');
-                // Converts the link elements from the first feed into an array
-                Array.from(currentFeeds).forEach(feed => {
-                    arrayOfFirstFeeds.push(feed);
-                });
-                loadFeed(1, done); // Loads the second feed
-            }, 1000);
+            loadFeed(0, () => {
+                currentFeeds = $('.feed').html();
+                loadFeed(1, () => {
+                    secondsFeeds = $('.feed').html();
+                    done();
+                }); // end of second loadFeed
+            }); // end of first loadFeed
         });
 
         it('should load new feed when new feed list item is selected', () => {
-            currentFeeds = $('.feed .entry-link');
-            // Converts the link elements from the second feed into an array
-            Array.from(currentFeeds).forEach(feed => {
-                arrayOfSecondsFeeds.push(feed);
-            });
-
-            // Feed list should not be empty
-            expect(feeds.length).not.toBe(0);
-
-            // Feed list item clicked
-            feedList.click();
-            expect(feedListMenu.hasClass('menu-hidden')).toBe(true);
-
-            // For loop check through the complete array of first feeds
-            // Compare  each link to the second array links in the exact positions
-            // If they do not match then the 2 feeds are indeed different
-            for (let index = 0; index < arrayOfFirstFeeds.length; index++) {
-                expect(arrayOfFirstFeeds[index] === arrayOfSecondsFeeds[index]).toBe(false);
-            }
+            expect(currentFeeds !== secondFeeds).toBe(true)
         });
     });
 }());
